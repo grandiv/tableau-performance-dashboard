@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 interface RegisterData {
   email: string;
   password: string;
+  nama: string;
   repeat_password?: string;
 }
 
@@ -25,7 +26,7 @@ export const login = async (email: string, password: string) => {
 };
 
 export const register = async (data: RegisterData) => {
-  if (!data.email || !data.password || !data.nama || !data.nohandphone) {
+  if (!data.email || !data.password || !data.nama) {
     throw new Error("All fields are required");
   }
 
@@ -47,6 +48,7 @@ export const register = async (data: RegisterData) => {
     data: {
       email: data.email,
       password: hashedPassword,
+      nama: data.nama,
     },
   });
 
