@@ -76,6 +76,42 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+  .telkom-theme {
+    --background: 0 0% 86%; /* DEDEDE */
+    --foreground: 0 0% 13%; /* hitam pekat untuk kontras */
+
+    --card: 0 0% 86%; /* DEDEDE */
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 86%; /* DEDEDE */
+    --popover-foreground: 0 0% 13%;
+
+    --primary: 0 79.5% 43.7%; /* D01819 */
+    --primary-foreground: 0 0% 100%; /* putih untuk teks di atas merah */
+
+    --secondary: 0 0% 80%; /* CDCDCD */
+    --secondary-foreground: 0 0% 13%; /* hitam pekat untuk kontras */
+
+    --muted: 0 0% 80%; /* CDCDCD */
+    --muted-foreground: 0 0% 40%; /* abu-abu gelap */
+
+    --accent: 0 79.5% 43.7%; /* D01819 */
+    --accent-foreground: 0 0% 100%; /* putih */
+
+    --destructive: 0 79.5% 43.7%; /* D01819 */
+    --destructive-foreground: 0 0% 100%; /* putih */
+
+    --border: 0 0% 80%; /* CDCDCD */
+    --input: 0 0% 80%; /* CDCDCD */
+
+    --ring: 0 79.5% 43.7%; /* D01819 */
+
+    --chart-1: 0 79.5% 43.7%; /* D01819 */
+    --chart-2: 0 0% 80%; /* CDCDCD */
+    --chart-3: 0 0% 86%; /* DEDEDE */
+    --chart-4: 240 15% 20%; /* biru gelap sebagai aksen */
+    --chart-5: 120 15% 40%; /* hijau gelap */
+  }
 }
 
 @layer base {
