@@ -2,10 +2,17 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type FormData = {
   fullName: string;
@@ -116,10 +123,16 @@ export function RegisterForm({
       <Card className="mx-auto max-w-sm">
         <CardHeader>
           <CardTitle className="text-3xl">Register</CardTitle>
-          <CardDescription>Enter your information to create an account</CardDescription>
+          <CardDescription>
+            Enter your information to create an account <br />
+            Already have an account?{" "}
+            <Link href="/login" className="text-[#327cd2]">
+              Login
+            </Link>
+          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <form onSubmit={handleSubmit}>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-3">
             <div className="space-y-2">
               <Label htmlFor="fullName">Full name</Label>
               <Input
@@ -130,7 +143,9 @@ export function RegisterForm({
                 onChange={handleChange}
                 required
               />
-              {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
+              {errors.fullName && (
+                <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
+              )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -143,7 +158,9 @@ export function RegisterForm({
                 onChange={handleChange}
                 required
               />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
@@ -155,7 +172,9 @@ export function RegisterForm({
                 onChange={handleChange}
                 required
               />
-              {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+              )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
@@ -167,10 +186,23 @@ export function RegisterForm({
                 onChange={handleChange}
                 required
               />
-              {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>}
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.confirmPassword}
+                </p>
+              )}
             </div>
-            {errors.submit && <p className="text-red-500 text-sm text-center">{errors.submit}</p>}
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            {errors.submit && (
+              <p className="text-red-500 text-sm text-center">
+                {errors.submit}
+              </p>
+            )}
+            <Button
+              variant="telkom"
+              type="submit"
+              className="w-full"
+              disabled={isLoading}
+            >
               {isLoading ? "Loading..." : "Register"}
             </Button>
           </form>
