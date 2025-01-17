@@ -1,3 +1,5 @@
+"use client";
+import { useAuth } from "@/hooks/use-auth";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
@@ -16,6 +18,13 @@ import {
 import TableauEmbed from "@/components/tableau";
 
 export default function Page() {
+  const { status } = useAuth();
+
+  // Show loading state while checking authentication
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <SidebarProvider>
       <AppSidebar />

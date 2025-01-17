@@ -1,15 +1,13 @@
-import Link from "next/link";
-import React from "react";
+import { getServerSession } from "next-auth/next";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
 
-type Props = {};
+export default async function Page() {
+  const session = await getServerSession(authOptions);
 
-const page = (props: Props) => {
-  return (
-    <div className="relative w-full h-full p-12">
-      <Link href="/login">Click here to login</Link>
-      <Link href="/register">Click here to register</Link>
-    </div>
-  );
-};
+  if (session) {
+    redirect("/dashboard");
+  }
 
-export default page;
+  redirect("/login");
+}
