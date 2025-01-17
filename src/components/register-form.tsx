@@ -16,9 +16,10 @@ export  function RegisterForm({
             <CardDescription>Enter your information to create an account</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+          <form>
             <div className="space-y-2">
-            <Label htmlFor="full-name">Full name</Label>
-            <Input id="full-name" placeholder="John Doe" required />
+              <Label htmlFor="full-name">Full name</Label>
+              <Input id="full-name" placeholder="John Doe" required />
             </div>
             <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
@@ -32,7 +33,8 @@ export  function RegisterForm({
             <Label htmlFor="confirm-password">Confirm Password</Label>
             <Input id="confirm-password" type="password" required />
             </div>
-            <Button className="w-full">Register</Button>
+            <Button type="submit" className="w-full">Register</Button>
+          </form>
         </CardContent>
         </Card>
     </div>
