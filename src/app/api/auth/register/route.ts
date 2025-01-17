@@ -16,7 +16,6 @@ export async function POST(request: Request) {
           id: user.id,
           email: user.email,
           nama: user.nama,
-          nohandphone: user.nohandphone,
         },
       },
       { status: 201 }
