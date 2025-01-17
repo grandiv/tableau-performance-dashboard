@@ -61,13 +61,9 @@ export function LoginForm({
   return (
     <Card className={cn("w-[380px]", className)} {...props}>
       <CardHeader>
-        <CardTitle>Login</CardTitle>
+        <CardTitle className="text-3xl">Login</CardTitle>
         <CardDescription>
-          Enter your email and password to login to your account <br />
-          {`Don't have an account?`}{" "}
-          <Link href="/register" className="text-[#327cd2]">
-            Register
-          </Link>
+          Enter your email and password to login to your account
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -108,6 +104,12 @@ export function LoginForm({
           >
             {isLoading ? "Logging in..." : "Login"}
           </Button>
+          <CardDescription>
+            {`Don't have an account?`}{" "}
+            <Link href="/register" className="text-[#327cd2]">
+              Register
+            </Link>
+          </CardDescription>
         </form>
       </CardContent>
     </Card>

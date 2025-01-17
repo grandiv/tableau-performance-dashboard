@@ -120,15 +120,11 @@ export function RegisterForm({
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="mx-auto max-w-sm">
+      <Card className="w-[380px]">
         <CardHeader>
           <CardTitle className="text-3xl">Register</CardTitle>
           <CardDescription>
-            Enter your information to create an account <br />
-            Already have an account?{" "}
-            <Link href="/login" className="text-[#327cd2]">
-              Login
-            </Link>
+            Enter your information to create an account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -205,6 +201,12 @@ export function RegisterForm({
             >
               {isLoading ? "Loading..." : "Register"}
             </Button>
+            <CardDescription>
+              Already have an account?{" "}
+              <Link href="/login" className="text-[#327cd2]">
+                Login
+              </Link>
+            </CardDescription>
           </form>
         </CardContent>
       </Card>
