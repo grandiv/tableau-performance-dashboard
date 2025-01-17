@@ -2,9 +2,10 @@ import { hash, compare } from "bcryptjs";
 import { prisma } from "@/lib/db";
 
 interface RegisterData {
+  fullName: string;
   email: string;
   password: string;
-  repeat_password?: string;
+  confirmPassword?: string;
 }
 
 export const login = async (email: string, password: string) => {
@@ -25,11 +26,11 @@ export const login = async (email: string, password: string) => {
 };
 
 export const register = async (data: RegisterData) => {
-  if (!data.email || !data.password || !data.nama || !data.nohandphone) {
+  if (!data.email || !data.password || !data.fullName) {
     throw new Error("All fields are required");
   }
 
-  if (data.password !== data.repeat_password) {
+  if (data.password !== data.confirmPassword) {
     throw new Error("Passwords do not match");
   }
 
@@ -46,6 +47,7 @@ export const register = async (data: RegisterData) => {
   const user = await prisma.user.create({
     data: {
       email: data.email,
+      fullName: data.fullName,
       password: hashedPassword,
     },
   });
