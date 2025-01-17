@@ -118,8 +118,8 @@ export function RegisterForm({
           <CardTitle className="text-3xl">Register</CardTitle>
           <CardDescription>Enter your information to create an account</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <form onSubmit={handleSubmit}>
+        <CardContent>
+          <form className="space-y-3" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <Label htmlFor="fullName">Full name</Label>
               <Input
