@@ -49,6 +49,7 @@ export const register = async (data: RegisterData) => {
       email: data.email,
       fullName: data.fullName,
       password: hashedPassword,
+      nama: data.nama,
     },
   });
 

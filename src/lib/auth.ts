@@ -27,6 +27,7 @@ export const authOptions: NextAuthOptions = {
           return {
             id: user.id,
             email: user.email,
+            nama: user.nama,
           };
         } catch (error) {
           console.error("Auth error:", error);
@@ -45,6 +46,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           id: user.id,
+          name: user.name,
           email: user.email,
         };
       }
@@ -57,6 +59,7 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           id: token.id,
+          name: token.name,
           email: token.email,
         },
       };
