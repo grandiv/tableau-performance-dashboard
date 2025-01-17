@@ -27,7 +27,6 @@ export const authOptions: NextAuthOptions = {
           return {
             id: user.id,
             email: user.email,
-            nama: user.nama,
           };
         } catch (error) {
           console.error("Auth error:", error);
