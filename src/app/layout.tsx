@@ -34,6 +34,7 @@ export default function RootLayout({
             attribute="class"
             defaultTheme="telkom-theme"
             enableSystem
+            themes={['telkom']}
             disableTransitionOnChange
           >
             {children}
