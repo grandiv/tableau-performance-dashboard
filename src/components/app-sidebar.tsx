@@ -1,19 +1,10 @@
 "use client";
 
 import * as React from "react";
-import {
-  BookOpen,
-  Bot,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
+import { GalleryVerticalEnd, SquareTerminal } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
+// import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import {
@@ -25,7 +16,7 @@ import {
 } from "@/components/ui/sidebar";
 
 // This is sample data.
-const data = {
+export const data = {
   teams: [
     {
       name: "Data SD WAN",
@@ -35,111 +26,76 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Net Profit",
+      url: "#",
+      icon: SquareTerminal,
+      isActive: true,
+      vizUrl: process.env.NEXT_PUBLIC_VIZ_URL as string,
+      items: [
+        {
+          title: "Gross Profit",
+          url: "#",
+        },
+        {
+          title: "Net Profit",
+          url: "#",
+        },
+        {
+          title: "Profit & Loss Statement",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Informasi 2",
+      url: "#",
+      icon: SquareTerminal,
+      isActive: true,
+      vizUrl: process.env.NEXT_PUBLIC_VIZ_URL2 as string,
+      items: [
+        {
+          title: "Item 1",
+          url: "#",
+        },
+        {
+          title: "Item 2",
+          url: "#",
+        },
+        {
+          title: "Item 3",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Informasi 3",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Item 1",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Item 2",
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Item 3",
           url: "#",
         },
       ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
     },
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  onSelect,
+  ...props
+}: { onSelect: (vizUrl: string) => void } & React.ComponentProps<
+  typeof Sidebar
+>) {
   const [user, setUser] = React.useState<{
     name: string;
     email: string;
@@ -168,12 +124,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader >
+      <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavMain
+          items={data.navMain}
+          onSelect={(vizUrl) => {
+            onSelect(vizUrl);
+          }}
+        />
+        {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
       <SidebarRail />
