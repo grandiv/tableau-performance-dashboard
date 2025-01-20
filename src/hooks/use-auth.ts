@@ -15,6 +15,10 @@ export function useAuth() {
     if (!session) {
       router.replace("/login");
     }
+
+    if (session) {
+      router.replace("/dashboard");
+    }
   }, [session, status, router]);
 
   return { session, status };
