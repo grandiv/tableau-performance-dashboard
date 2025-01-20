@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useAuth } from "@/hooks/use-auth";
 
 interface LoginFormData {
   email: string;
@@ -57,6 +58,11 @@ export function LoginForm({
       setIsLoading(false);
     }
   };
+
+  const { status } = useAuth();
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Card className={cn("w-[380px]", className)} {...props}>
