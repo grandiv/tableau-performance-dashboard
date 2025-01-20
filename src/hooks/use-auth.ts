@@ -11,9 +11,10 @@ export function useAuth() {
     // Check if authentication is still loading
     if (status === "loading") return;
 
-    // If no session exists, redirect to login
+    // If no session exists, redirect to login or register
     if (!session) {
-      router.replace("/login");
+      const path = window.location.pathname === "/register" ? "/register" : "/login";
+      router.replace(path);
     }
     if (session) {
       router.push("/dashboard");
