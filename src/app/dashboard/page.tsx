@@ -19,6 +19,8 @@ import TableauPublicEmbed from "@/components/TableauPublicEmbed";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Page() {
+  const vizUrl = process.env.NEXT_PUBLIC_VIZ_URL as string;
+
   const { status } = useAuth();
 
   if (status === "loading") {
@@ -49,7 +51,7 @@ export default function Page() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="auto-rows-min gap-4 md:grid-cols-3">
-            <TableauPublicEmbed vizUrl="https://public.tableau.com/views/Tableau-Test_17373451254160/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" />
+            <TableauPublicEmbed vizUrl={vizUrl} />
 
             {/* <TableauEmbed
               tableauUrl={
