@@ -15,7 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SD-WAN Tableau Telkom",
+  title: {
+    absolute: "",
+    default: "SD-WAN Tableau Telkom",
+    template: "%s | SD-WAN Tableau Telkom",
+  },
   description: "Created with 💖 by Melodi",
 };
 
