@@ -16,6 +16,7 @@ export function useAuth() {
       const path = window.location.pathname === "/register" ? "/register" : "/login";
       router.replace(path);
     }
+    
     if (session) {
       router.push("/dashboard");
     }

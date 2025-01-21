@@ -34,8 +34,8 @@ export function TeamSwitcher({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+        {/* <DropdownMenu>
+          <DropdownMenuTrigger asChild> */}
 
             <SidebarMenuButton
               size="lg"
@@ -52,7 +52,7 @@ export function TeamSwitcher({
               </div>
               {/* <ChevronsUpDown className="ml-auto" /> */}
             </SidebarMenuButton>
-          </DropdownMenuTrigger>
+          {/* </DropdownMenuTrigger> */}
           {/* <DropdownMenuContent
             className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
             align="start"
@@ -83,7 +83,7 @@ export function TeamSwitcher({
               <div className="font-medium text-muted-foreground">Add team</div>
             </DropdownMenuItem>
           </DropdownMenuContent> */}
-        </DropdownMenu>
+        {/* </DropdownMenu> */}
       </SidebarMenuItem>
     </SidebarMenu>
   )
