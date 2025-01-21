@@ -24,12 +24,20 @@ export default function Page() {
   const [selectedVizUrl, setSelectedVizUrl] = useState<string | null>(
     data.navMain[0].vizUrl ?? null
   );
+  // Add state for active breadcrumb
+  const [activePage, setActivePage] = useState(data.navMain[0].title);
+
   const { status } = useAuth();
 
   const handleSelect: React.MouseEventHandler<HTMLDivElement> & ((vizUrl: string) => void) = 
   (vizUrlOrEvent: string | React.SyntheticEvent<HTMLDivElement>) => {
     if (typeof vizUrlOrEvent === 'string') {
       setSelectedVizUrl(vizUrlOrEvent);
+      // Find the matching menu item and update breadcrumb
+      const activeItem = data.navMain.find(item => item.vizUrl === vizUrlOrEvent);
+      if (activeItem) {
+        setActivePage(activeItem.title);
+      }
     }
     // Handle event case if needed
   };
@@ -48,13 +56,10 @@ export default function Page() {
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  Insight Analysis
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{activePage}</BreadcrumbPage>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data SD WAN</BreadcrumbPage>
-                </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
