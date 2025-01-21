@@ -26,13 +26,21 @@ export default function Page() {
   );
   const { status } = useAuth();
 
+  const handleSelect: React.MouseEventHandler<HTMLDivElement> & ((vizUrl: string) => void) = 
+  (vizUrlOrEvent: string | React.SyntheticEvent<HTMLDivElement>) => {
+    if (typeof vizUrlOrEvent === 'string') {
+      setSelectedVizUrl(vizUrlOrEvent);
+    }
+    // Handle event case if needed
+  };
+
   if (status === "loading") {
     return <div>Loading...</div>;
   }
 
   return (
     <SidebarProvider>
-      <AppSidebar onSelect={(vizUrl) => setSelectedVizUrl(vizUrl)} />
+      <AppSidebar onSelect={handleSelect} />
       <SidebarInset>
         <header className="flex justify-between pr-5 h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
